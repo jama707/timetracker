@@ -1,0 +1,7 @@
+<h1>Works</h1>
+
+<ul>
+  <% @works.each do |work| %>
+      <li><%= link_to(work.datetimeperformed, work) %></li>
+  <% end %>
+</ul>

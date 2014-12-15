@@ -1,0 +1,14 @@
+<h1>Companies: index</h1>
+
+<table>
+  <tbody>
+  <tr>
+    <th>Company</th>
+  </tr>
+  <% @companies.each do |company| %>
+      <tr>
+        <td><%= link_to company, company %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

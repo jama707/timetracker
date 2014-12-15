@@ -1,0 +1,18 @@
+<h1>Projects</h1>
+
+<p>Here are all of the projects:</p>
+
+<table>
+  <tbody>
+  <tr>
+    <th>Project</th>
+    <th>Company</th>
+  </tr>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= link_to project, project %></td>
+      <td><%= link_to project.company, project.company %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
