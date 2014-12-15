@@ -5,10 +5,10 @@
   <tr>
     <th>Company</th>
   </tr>
-  <% @companies.each do |company| %>
-      <tr>
-        <td><%= link_to company, company %></td>
-      </tr>
-  <% end %>
+  <%= render partial: "company", collection: @companies %>
   </tbody>
 </table>
+
+<% content_for :aside do %>
+    <%= render 'sidebar' %>
+<% end %>

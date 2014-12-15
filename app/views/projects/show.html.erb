@@ -2,3 +2,23 @@
 <p>Company: <%= @project.company.name %></p>
 <p>Default Rate: <%= @project.default_rate %></p>
 <p>Slug: <%= @project.slug %></p>
+
+<p>All works</p>
+<table>
+  <tbody>
+  <tr>
+    <th>View</th>
+    <th>User</th>
+    <th>Project</th>
+    <th>Date/Time</th>
+    <th>Hours</th>
+  </tr>
+  <%= render partial: "works/work", collection: @project.works %>
+  </tbody>
+</table>
+
+
+<% content_for :aside do %>
+    <%= render 'sidebar' %>
+<% end %>
+
