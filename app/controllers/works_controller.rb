@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  protect_from_forgery
   def index
     if (params[:days])
       @works= Work.recentdays(params[:days]).order('datetimeperformed desc')
@@ -17,8 +18,13 @@ class WorksController < ApplicationController
 
   def create
     @work =Work.new(params[:work].permit(:project_id, :user_id, :datetimeperformed, :hours))
+    uploaded_io =  params[:work][:doc]
+    File.open(Rails.root.join('public','uploads',uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
     respond_to do |format|
       if @work.save
+        Usermailer.workcreated_email(@work).deliver
         format.html { redirect_to @work, notice: 'Work created' }
         format.js {}
       else
