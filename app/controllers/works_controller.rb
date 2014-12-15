@@ -4,9 +4,9 @@ class WorksController < ApplicationController
   # protect_from_forgery
   def index
     if (params[:days])
-      @works= Work.recentdays(params[:days]).order('datetimeperformed desc')
+      @works= Work.recentdays(params[:days]).order('datetimeperformed desc').paginate(:page => params[:page])
     else
-      @works=Work.all.order('datetimeperformed desc')
+      @works=Work.all.order('datetimeperformed desc').paginate(:page => params[:page])
     end
   end
 
