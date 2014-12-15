@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_filter :only_admins_create_update_company, only: [:new, :create, :update, :edit]
+
   def index
     @companies=Company.all
 
@@ -35,6 +37,11 @@ class CompaniesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  private
+  def only_admins_create_update_company
+    redirect_to companies_path, :alert => 'Only admins can modify Company' unless current_user.admin
   end
 
 end

@@ -18,11 +18,6 @@
     </div>
 
     <div>
-      <%= f.label :user_id %>
-      <%= f.collection_select(:user_id, User.all.order('lname, fname '), :id, :to_s, prompt: true) %>
-    </div>
-
-    <div>
       <%= f.label :datetimeperformed, 'Date/Time Performed' %>
       <%= f.datetime_select :datetimeperformed %>
     </div>

@@ -9,6 +9,8 @@ brianhoke:
   lname: Hoke
   company: bentleyhoke
   email: brain.hoke@yopmail.com
+  encrypted_password: <%= User.new.send(:password_digest,'secret123')%>
+  admin: true
 
 janedoe:
   fname: Jama
@@ -16,9 +18,12 @@ janedoe:
   company: bentleyhoke
   email: jama707@outlook.com
   encrypted_password: <%= User.new.send(:password_digest,'secret123')%>
+  admin: true
 
 ralphmartinez:
   fname: Ralph
   lname: Martinez
   company: clientinc
   email: ralph.martinez@yopmail.com
+  admin: false
+  encrypted_password: <%= User.new.send(:password_digest,'secret123')%>
