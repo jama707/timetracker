@@ -10,7 +10,7 @@
 <body>
 <div id="main">
   <header>
-    <%= link_to content_tag('canvas','Time Tracker',id: 'logocanvas'), root_url %>
+    <%= link_to content_tag('canvas', 'Time Tracker', id: 'logocanvas'), root_url %>
     <nav>
       <ul>
         <% nav_items.each do |nav_item| %>
@@ -18,11 +18,14 @@
         <% end %>
       </ul>
     </nav>
+
   </header>
 
   <section>
     <article>
-
+      <% if flash[:notice] %>
+          <div class="flash notice"> <%= flash[:notice] %></div>
+      <% end %>
       <%= yield %>
 
     </article>
