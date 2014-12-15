@@ -1,13 +1,17 @@
 <h1><%= @project.name %></h1>
-<p><%= link_to('Edit',  edit_project_path(@project)) %></p>
+<p><%= link_to('Edit', edit_project_path(@project)) %></p>
 <p>Company: <%= @project.company.name %></p>
 <p>Default Rate: <%= @project.default_rate %></p>
 <p>Slug: <%= @project.slug %></p>
 
+<div class="remoteform">
+  <h2>Add Work</h2>
+  <%= render partial: 'works/form', locals: {doajax: true} %>
+</div>
 <p>All works</p>
 <table>
   <tbody>
-  <tr>
+  <tr id="headerrow">
     <th>View</th>
     <th>User</th>
     <th>Project</th>

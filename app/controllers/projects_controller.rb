@@ -9,6 +9,8 @@ class ProjectsController < ApplicationController
     else
       @project=Project.find(params[:id])
     end
+    @work = Work.new
+    @work.project = @project
   end
 
   def new
@@ -26,11 +28,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project =  Project.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def update
-    @project =  Project.find(params[:id])
+    @project = Project.find(params[:id])
     if @project.update(params[:project].permit(:name, :default_rate, :slug, :company_id))
       flash[:notice]= 'Project updated'
       redirect_to @project

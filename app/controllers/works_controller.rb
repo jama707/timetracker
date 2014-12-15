@@ -17,20 +17,24 @@ class WorksController < ApplicationController
 
   def create
     @work =Work.new(params[:work].permit(:project_id, :user_id, :datetimeperformed, :hours))
-    if @work.save
-      flash[:notice]= 'Work created'
-      redirect_to @work
-    else
-      render 'new'
+    respond_to do |format|
+      if @work.save
+        format.html { redirect_to @work, notice: 'Work created' }
+        format.js {}
+      else
+        format.html { render 'new' }
+        format.js {}
+      end
+
     end
   end
 
   def edit
-    @work =  Work.find(params[:id])
+    @work = Work.find(params[:id])
   end
 
   def update
-    @work =  Work.find(params[:id])
+    @work = Work.find(params[:id])
     if @work.update(params[:work].permit(:project_id, :user_id, :datetimeperformed, :hours))
       flash[:notice]= 'Work updated'
       redirect_to @work

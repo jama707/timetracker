@@ -10,8 +10,9 @@
 
     </div>
 <% end %>
+<% doajax = false unless (defined?  doajax) %>
 
-<%= form_for @work do |f| %>
+<%= form_for(@work, remote: doajax ) do |f| %>
     <div>
       <%= f.label :project_id, '' %>
       <%= f.collection_select(:project_id, Project.all, :id, :name, prompt: true) %>
