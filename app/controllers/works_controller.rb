@@ -19,8 +19,11 @@ class WorksController < ApplicationController
   def create
     @work =Work.new(params[:work].permit(:project_id, :user_id, :datetimeperformed, :hours))
     uploaded_io =  params[:work][:doc]
-    File.open(Rails.root.join('public','uploads',uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
+    if uploaded_io
+      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+        @work.doc = uploaded_io.original_filename
+      end
     end
     respond_to do |format|
       if @work.save
