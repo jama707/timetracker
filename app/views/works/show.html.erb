@@ -1,4 +1,6 @@
 <h1><%= @work.datetimeperformed %></h1>
+<p><%= link_to 'Edit', edit_work_path %></p>
+
 <p>Done by: <%= "#{@work.user.fname} #{@work.user.lname}" %></p>
 <p>Project: <%= @work.project.name %></p>
 <p>Hours: <%= @work.hours %></p>
